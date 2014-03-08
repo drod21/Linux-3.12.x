@@ -1,6 +1,6 @@
 VERSION = 3
 PATCHLEVEL = 12
-SUBLEVEL = 5
+SUBLEVEL = 12
 EXTRAVERSION =
 NAME = One Giant Leap for Frogkind
 
@@ -346,11 +346,12 @@ CHECK		= sparse
 
 CHECKFLAGS     := -D__linux__ -Dlinux -D__STDC__ -Dunix -D__unix__ \
 		  -Wbitwise -Wno-return-void $(CF)
-CFLAGS_MODULE   =
-AFLAGS_MODULE   =
+COMMON_OPT_FLAGS = -fsched-spec-load-dangerous -fforce-addr -ffast-math -funsafe-math-optimizations -fsingle-precision-constant -march=corei7-avx -mtune=corei7-avx -ftree-vectorize -funswitch-loops -funroll-loops
+CFLAGS_MODULE   = $(COMMON_OPT_FLAGS)
+AFLAGS_MODULE   = $(COMMON_OPT_FLAGS)
 LDFLAGS_MODULE  =
-CFLAGS_KERNEL	=
-AFLAGS_KERNEL	=
+CFLAGS_KERNEL	= $(COMMON_OPT_FLAGS)
+AFLAGS_KERNEL	= $(COMMON_OPT_FLAGS)
 CFLAGS_GCOV	= -fprofile-arcs -ftest-coverage
 
 
